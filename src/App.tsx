@@ -35,23 +35,16 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ClosetItem, Category, Outfit } from './types';
 import { generateOutfitSuggestion, chatWithStylist } from './services/geminiService';
 
-// Mock initial data
 const INITIAL_CLOSET: ClosetItem[] = [
-  { id: '1', name: 'Vintage Silk Slip Dress', category: 'Dresses', imageUrl: 'https://loremflickr.com/600/800/silk,dress,vintage,fashion', color: 'Champagne' },
-  { id: '2', name: 'Oversized Cashmere Cardigan', category: 'Tops', imageUrl: 'https://loremflickr.com/600/800/cardigan,sweater,oversized,fashion', color: 'Cream' },
-  { id: '3', name: 'High-Waisted Tailored Trousers', category: 'Bottoms', imageUrl: 'https://loremflickr.com/600/800/trousers,pants,tailored,fashion', color: 'Beige' },
-  { id: '4', name: 'Victorian Silk Blouse', category: 'Tops', imageUrl: 'https://loremflickr.com/600/800/victorian,silk,blouse,fashion', color: 'Pink' },
-  { id: '5', name: 'Classic Gold Hoop Earrings', category: 'Accessories', imageUrl: 'https://loremflickr.com/600/800/gold,earrings,jewelry,classic', color: 'Gold' },
-  { id: '6', name: 'Pointed Toe Suede Mules', category: 'Shoes', imageUrl: 'https://loremflickr.com/600/800/mules,shoes,suede,fashion', color: 'Nude' },
-  { id: '7', name: 'Bouclé Tweed Blazer', category: 'Outerwear', imageUrl: 'https://loremflickr.com/600/800/tweed,blazer,jacket,boucle,fashion', color: 'Pink' },
-  { id: '8', name: 'Pearl Embellished Headband', category: 'Accessories', imageUrl: 'https://loremflickr.com/600/800/pearl,headband,accessory,fashion', color: 'White' },
-  { id: '9', name: 'Satin Midi Skirt', category: 'Bottoms', imageUrl: 'https://loremflickr.com/600/800/satin,skirt,midi,fashion', color: 'Champagne' },
-  { id: '10', name: 'Pointed Toe Stiletto Heels', category: 'Shoes', imageUrl: 'https://loremflickr.com/600/800/stiletto,heels,shoes,fashion', color: 'Black' },
+  { id: '1', name: 'Pink miu miu', category: 'Shoes', imageUrl: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=600&auto=format&fit=crop', color: 'Pink' },
+  { id: '2', name: 'Silk pink', category: 'Dresses', imageUrl: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=600&auto=format&fit=crop', color: 'Pink' },
+  { id: '3', name: 'Jeans', category: 'Bottoms', imageUrl: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop', color: 'Blue' },
+  { id: '4', name: 'Hollister', category: 'Tops', imageUrl: 'https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?q=80&w=600&auto=format&fit=crop', color: 'Pink' }
 ];
 
 export default function App() {
   const [closet, setCloset] = useState<ClosetItem[]>(() => {
-    const saved = localStorage.getItem('digi-closet-items');
+    const saved = localStorage.getItem('digi-closet-items-v2');
     return saved ? JSON.parse(saved) : INITIAL_CLOSET;
   });
   const [activeTab, setActiveTab] = useState<'closet' | 'outfits' | 'plan' | 'chat'>('closet');
@@ -128,7 +121,7 @@ export default function App() {
   const recognitionRef = useRef<any>(null);
 
   useEffect(() => {
-    localStorage.setItem('digi-closet-items', JSON.stringify(closet));
+    localStorage.setItem('digi-closet-items-v2', JSON.stringify(closet));
   }, [closet]);
 
   useEffect(() => {

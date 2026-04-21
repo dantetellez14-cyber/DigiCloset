@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  
+  --color-baby-pink-50: #fff5f6;
+  --color-baby-pink-100: #ffebed;
+  --color-baby-pink-200: #ffd6db;
+  --color-baby-pink-300: #ffb3bc;
+  --color-baby-pink-400: #ff8595;
+  --color-baby-pink-500: #ff5c72;
+  
+  --color-chique-gold: #d4af37;
+  --color-chique-slate: #2c3e50;
+}
+
+@layer base {
+  body {
+    @apply bg-baby-pink-50 text-chique-slate font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+.chique-card {
+  @apply bg-white border border-baby-pink-100 shadow-[0_4px_20px_rgba(255,182,193,0.1)] rounded-sm overflow-hidden transition-all duration-500;
+}
+
+.chique-card:hover {
+  @apply shadow-[0_8px_30px_rgba(255,182,193,0.2)] -translate-y-1;
+}
+
+.alta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.glass-nav {
+  @apply bg-white/80 backdrop-blur-xl border-t border-baby-pink-100;
+}
+
+.btn-chique {
+  @apply px-6 py-2 bg-chique-slate text-white font-medium text-xs uppercase tracking-widest hover:bg-chique-slate/90 transition-all rounded-none;
+}
+
+.btn-pink {
+  @apply px-6 py-2 bg-baby-pink-200 text-chique-slate font-medium text-xs uppercase tracking-widest hover:bg-baby-pink-300 transition-all rounded-none;
+}
+
+.editorial-text {
+  @apply font-serif italic text-lg text-baby-pink-500;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-baby-pink-50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-baby-pink-200;
+}

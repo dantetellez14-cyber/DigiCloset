@@ -36,15 +36,35 @@ import { ClosetItem, Category, Outfit } from './types';
 import { generateOutfitSuggestion, chatWithStylist } from './services/geminiService';
 
 const INITIAL_CLOSET: ClosetItem[] = [
-  { id: '1', name: 'Pink miu miu', category: 'Shoes', imageUrl: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=600&auto=format&fit=crop', color: 'Pink' },
-  { id: '2', name: 'Silk pink', category: 'Dresses', imageUrl: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=600&auto=format&fit=crop', color: 'Pink' },
-  { id: '3', name: 'Jeans', category: 'Bottoms', imageUrl: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop', color: 'Blue' },
-  { id: '4', name: 'Hollister', category: 'Tops', imageUrl: 'https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?q=80&w=600&auto=format&fit=crop', color: 'Pink' }
+  {
+    id: "9cs9c7wj8",
+    name: "Pink miu miu",
+    category: "Shoes",
+    imageUrl: "/9cs9c7wj8.png"
+  },
+  {
+    id: "bdw9eqkvr",
+    name: "Silk pink",
+    category: "Dresses",
+    imageUrl: "/bdw9eqkvr.png"
+  },
+  {
+    id: "5t2ga95yv",
+    name: "Jeans",
+    category: "Bottoms",
+    imageUrl: "/5t2ga95yv.png"
+  },
+  {
+    id: "bnwui6v5u",
+    name: "Hollister",
+    category: "Tops",
+    imageUrl: "/bnwui6v5u.png"
+  }
 ];
 
 export default function App() {
   const [closet, setCloset] = useState<ClosetItem[]>(() => {
-    const saved = localStorage.getItem('digi-closet-items-v2');
+    const saved = localStorage.getItem('digi-closet-items-v3');
     return saved ? JSON.parse(saved) : INITIAL_CLOSET;
   });
   const [activeTab, setActiveTab] = useState<'closet' | 'outfits' | 'plan' | 'chat'>('closet');
@@ -121,7 +141,7 @@ export default function App() {
   const recognitionRef = useRef<any>(null);
 
   useEffect(() => {
-    localStorage.setItem('digi-closet-items-v2', JSON.stringify(closet));
+    localStorage.setItem('digi-closet-items-v3', JSON.stringify(closet));
   }, [closet]);
 
   useEffect(() => {

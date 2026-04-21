@@ -248,18 +248,8 @@ export default function App() {
     setAuthError(null);
 
     try {
-      const endpoint = authMode === 'signup' ? '/api/signup' : '/api/signin';
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: authEmail, password: authPassword }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Authentication failed');
-      }
+      // Mock network delay since backend is removed for Vercel
+      await new Promise(resolve => setTimeout(resolve, 800));
 
       setVoiceFeedback(authMode === 'signup' ? "Welcome to the Atelier!" : "Welcome back, darling.");
       setShowAuthModal(false);
